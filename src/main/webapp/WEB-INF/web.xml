@@ -1,0 +1,52 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Movie Ticket Booking System</display-name>
+  
+  <!-- Login Servlet -->
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.movieticket.web.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Register Servlet -->
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.movieticket.web.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Movies Servlet -->
+  <servlet>
+    <servlet-name>MoviesServlet</servlet-name>
+    <servlet-class>com.movieticket.web.MoviesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MoviesServlet</servlet-name>
+    <url-pattern>/movies</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Booking Servlet -->
+  <servlet>
+    <servlet-name>BookingServlet</servlet-name>
+    <servlet-class>com.movieticket.web.BookingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookingServlet</servlet-name>
+    <url-pattern>/booking</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Welcome file list -->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
