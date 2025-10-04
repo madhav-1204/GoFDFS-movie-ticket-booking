@@ -8,8 +8,16 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 public class WebServerLauncher {
 
     public static void main(String[] args) throws Exception {
-        // Create a new Jetty server on port 3000
-        Server server = new Server(3000);
+        // Determine port: use PORT env (Railway/Render/etc.) or default to 3000 locally
+        String portEnv = System.getenv("PORT");
+        int port;
+        try {
+            port = portEnv != null ? Integer.parseInt(portEnv) : 3000;
+        } catch (NumberFormatException nfe) {
+            port = 3000; // fallback
+        }
+
+        Server server = new Server(port);
 
         // Create a context handler to hold our servlets
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -33,8 +41,8 @@ public class WebServerLauncher {
         holderDefault.setInitParameter("dirAllowed", "true");
         context.addServlet(holderDefault, "/");
 
-        System.out.println("Starting Jetty Server on http://localhost:3000");
-        System.out.println("Access the application at http://localhost:3000");
+    System.out.println("Starting Jetty Server on http://localhost:" + port);
+    System.out.println("Access the application at http://localhost:" + port);
         System.out.println("Demo credentials - Username: demo, Password: demo123");
 
         try {
@@ -44,8 +52,8 @@ public class WebServerLauncher {
             System.out.println("🎬 GoFDFS Movie Booking Server Started!");
             System.out.println("=================================");
             System.out.println("Access the application at:");
-            System.out.println("  http://localhost:3000");
-            System.out.println("  http://localhost:3000/movies");
+            System.out.println("  http://localhost:" + port);
+            System.out.println("  http://localhost:" + port + "/movies");
             System.out.println("=================================");
             System.out.println("Press ENTER to stop the server");
             System.out.println("=================================");
